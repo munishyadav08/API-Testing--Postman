@@ -60,8 +60,87 @@ pm.test("Validate the booking object schema", function () {
     pm.expect(responseData.booking.bookingdates.checkout).to.exist.and.to.be.a('string');
 });
 
+## Test Cases and Results
 
-Make sure to replace `./path_to_your_image/api.png` with the actual path of your image after adding it to the appropriate directory in your project folder.
+### Test Case 2: Response Status Code is 200
+- **Status**: Pass
+- **Description**: Verify that the API returns a 200 status code for a successful booking retrieval.
+- **Preconditions**: The booking API is functioning and the request is valid.
+- **Steps**:
+  1. Send a request to the booking endpoint.
+  2. Check the response status code.
+- **Expected Result**: The status code should be 200.
 
-This README is now updated to include the new schema validation code and the screenshot for clarity.
+### Test Case 3: Content-Type is `application/json`
+- **Status**: Pass
+- **Description**: Ensure that the Content-Type of the response is `application/json`.
+- **Preconditions**: The API returns a valid response.
+- **Steps**:
+  1. Send a request to the booking endpoint.
+  2. Check the Content-Type header in the response.
+- **Expected Result**: The Content-Type should be `application/json`.
+
+### Test Case 4: Booking ID Should be a Number
+- **Status**: Pass
+- **Description**: Validate that the booking ID returned in the response is a number.
+- **Preconditions**: The API returns a valid booking object.
+- **Steps**:
+  1. Send a request to retrieve a booking.
+  2. Validate the type of the `bookingID` field in the response.
+- **Expected Result**: The `bookingID` should be a number.
+
+### Test Case 5: First Name is a Non-Empty String
+- **Status**: Pass
+- **Description**: Verify that the first name in the booking object is a non-empty string.
+- **Preconditions**: The booking object contains user details.
+- **Steps**:
+  1. Send a request to retrieve a booking.
+  2. Check the `firstName` field in the response object.
+- **Expected Result**: The `firstName` should be a non-empty string.
+
+### Test Case 6: Last Name is a Non-Empty String
+- **Status**: Pass
+- **Description**: Verify that the last name in the booking object is a non-empty string.
+- **Preconditions**: The booking object contains user details.
+- **Steps**:
+  1. Send a request to retrieve a booking.
+  2. Check the `lastName` field in the response object.
+- **Expected Result**: The `lastName` should be a non-empty string.
+
+## Documentation
+
+### Create Booking
+This endpoint allows you to create a new booking.
+
+- **Request Body**:
+```json
+{
+  "firstname": "string",
+  "lastname": "string",
+  "totalprice": 100,
+  "depositpaid": true,
+  "bookingdates": {
+    "checkin": "2024-01-01",
+    "checkout": "2024-01-05"
+  },
+  "additionalneeds": "Breakfast"
+}
+## Response
+
+```json
+{
+  "bookingid": 1,
+  "booking": {
+    "firstname": "John",
+    "lastname": "Doe",
+    "totalprice": 100,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2024-01-01",
+      "checkout": "2024-01-05"
+    },
+    "additionalneeds": "Breakfast"
+  }
+}
+
 
